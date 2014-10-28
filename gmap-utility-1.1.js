@@ -4,6 +4,10 @@
  * @author  M.M.H.Masud<masudiiuc@gmail.com>
  * @date    28th Oct, 2014 
  * @url     https://developers.google.com/maps/documentation/javascript/directions
+ *
+ * @todo
+ * 1. set "optimizewaypoints" to get best directions and best route
+ * 2. set "unitSystem" for geting distance in Mile or Kilometers
  */
 
 var GmapUtility = {
