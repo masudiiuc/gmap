@@ -15,13 +15,19 @@ var GmapUtility = {
     unitSystem  : google.maps.UnitSystem.IMPERIAL,
     gmapService : '',
     distanceArr : [],
-    debug       : true,
+    debug       : false,
     wayPoints   : [],
+    callback    : '',
     
-    init: function(address, unit, debug) {
+    init: function(address, callBack) {
+        
         this.addressList = address;
         this.debug       = (typeof debug == undefined ? debug : this.debug);
         this.gmapService = new google.maps.DirectionsService();
+        
+        if (typeof callBack === 'function') {
+            this.callback = callBack;
+        }
 
         this.calculateDistance(address);
     },
@@ -30,6 +36,11 @@ var GmapUtility = {
         
         return this.distanceArr;
     }, 
+    
+    getDistanceWithCallBack: function() {
+        
+            
+    },
     
     getWayPoints: function(){
       
@@ -66,7 +77,6 @@ var GmapUtility = {
     },
     
     processResponse: function(response, status) {
-        console.log(response);
         
         if (status != google.maps.DistanceMatrixStatus.OK) {
             alert('Error was: ' + status);
@@ -86,6 +96,11 @@ var GmapUtility = {
                               });
                 
             });
+        }
+        
+        if (typeof this.callback === 'function') {
+            if(this.debug) console.log('i am in process Response');
+            this.callback.call(this, _that.distanceArr);
         }
     }
     
