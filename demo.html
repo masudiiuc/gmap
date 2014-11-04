@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Google Distance Matrix</title>
+    
+        <script src="http://cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <script src="gmap-utility-1.1.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+             
+            var address = [];
+                address.push('501 turner Road, Apt#512, Grapevine, TX 76051'),
+                address.push('201 Starnes St, Grapevine, TX 76051'),
+                address.push('820 W Northwest Hwy, Grapevine, TX 76051'),
+                address.push('912 W Northwest Hwy Grapevine, TX 76051'),
+                address.push('2555 Esters Rd, Irving, TX 75062');
+                
+            
+            console.log('I am set to Call');
+            GmapUtility.init(address, callMeAfterSetTimeOut);   
+            
+            /**
+             * Call me once response is available
+             *
+             */
+            function callMeAfterSetTimeOut(distanceArr){
+            
+                console.log('********* Hurry! I am called **************');
+                console.log('Distance:', distanceArr);    
+            }
+
+            
+            
+        </script>   
+    </head>
+    
+    <body>
+        
+    </body>
+    
+</html>
